@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { UserFavoriteFoods } from "./UserFavoriteFoods";
 import { UserUsername } from "./UserUsername";
 export default function UserProfile(props){
     return (
     <div id="user-profile">
-        <UserUsername username="jannn" />
+        <UserUsername username={props.username} />
         <div>
             <span>Email:</span>
             <span>larocojanlorenz@gmail.com</span>
@@ -15,4 +16,16 @@ export default function UserProfile(props){
         <UserFavoriteFoods></UserFavoriteFoods>
     </div>
     );
+}
+UserProfile.propTypes = {
+    username: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    callMe: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool,
+    favorites: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            id: PropTypes.string.isRequired,
+        })
+    )
 }
