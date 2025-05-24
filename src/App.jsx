@@ -1,5 +1,6 @@
 import UserProfile from "./Components/UserProfile";
 import { UserDetails } from "./Components/UserDetails";
+import { LoginForm } from "./Components/LoginForm";
 export default function App(){
     const mockUsers = [
         {
@@ -18,13 +19,21 @@ export default function App(){
             email: "alpha@gmail.com",
         },
     ]
-    return (
+    // return (
+    //     <div>
+    //         {mockUsers.map((user) => {
+    //             return <UserDetails key = {user.id} user = {user}/>
+    //         })}
+    //     </div>
+    // )
+
+   return (
         <div>
-            {mockUsers.map((user) => {
-                return <UserDetails key = {user.id} user = {user}/>
-            })}
+        <LoginForm/>
         </div>
     )
+
+
     // return  ( 
     //     <div>
     //         <UserProfile username="wasap" age={19} favorites={[
