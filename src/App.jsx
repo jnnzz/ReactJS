@@ -1,8 +1,12 @@
 import UserProfile from "./Components/UserProfile";
 import { UserDetails } from "./Components/UserDetails";
 import { LoginForm } from "./Components/LoginForm";
+import { RegisterForm } from "./Components/RegisterForm";
+import { useEffect, useState } from "react";
+
 export default function App(){
-    const mockUsers = [
+        const [sync, setSync] = useState(false);
+        const [users, setUsers] =useState( [
         {
             id:1,
             username: "nyzo",
@@ -18,7 +22,27 @@ export default function App(){
             username: "alpha",
             email: "alpha@gmail.com",
         },
-    ]
+    ]);
+    useEffect(() => {
+        console.log("rendered");
+    },[sync]);
+    // const mockUsers = [
+    //     {
+    //         id:1,
+    //         username: "nyzo",
+    //         email: "nyzo@gmail.com",
+    //     },
+    //     {
+    //         id:2,
+    //         username: "cassie",
+    //         email: "cassie@gmail.com",
+    //     },
+    //     {
+    //         id:3,
+    //         username: "alpha",
+    //         email: "alpha@gmail.com",
+    //     },
+    // ]
     // return (
     //     <div>
     //         {mockUsers.map((user) => {
@@ -29,10 +53,12 @@ export default function App(){
 
    return (
         <div>
-        <LoginForm/>
+            {users.map((user) => (
+                <UserDetails key={user.id} user={user} setUsers={setUsers} />
+            ))}
+            <button onClick={() => setSync((currentCount)=> !currentCount)}>Clickk to count</button>
         </div>
     )
-
 
     // return  ( 
     //     <div>
